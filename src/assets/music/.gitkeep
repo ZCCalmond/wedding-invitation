@@ -1,0 +1,15 @@
+# Music Directory
+
+This directory is for background music.
+
+## Example files to add:
+- wedding-music.mp3
+- background-song.mp3
+- etc.
+
+Update the MusicPlayer.jsx component to use actual music paths like:
+`/assets/music/wedding-music.mp3`
+
+## Recommended music format:
+- MP3 format for best compatibility
+- Moderate bitrate (128-192 kbps) to balance quality and file size

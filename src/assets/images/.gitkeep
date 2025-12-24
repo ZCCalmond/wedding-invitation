@@ -1,0 +1,12 @@
+# Images Directory
+
+This directory is for wedding photos and images.
+
+## Example files to add:
+- couple-photo-1.jpg
+- couple-photo-2.jpg
+- couple-photo-3.jpg
+- etc.
+
+Replace the placeholder URLs in PhotoGallery.jsx with actual image paths like:
+`/assets/images/couple-photo-1.jpg`
