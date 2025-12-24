@@ -72,12 +72,12 @@
 }
 
 /* Swiper pagination customization */
-.photo-swiper :global(.swiper-pagination-bullet) {
+.photo-swiper .swiper-pagination-bullet {
   background: #d4a574;
   opacity: 0.5;
 }
 
-.photo-swiper :global(.swiper-pagination-bullet-active) {
+.photo-swiper .swiper-pagination-bullet-active {
   opacity: 1;
 }
 

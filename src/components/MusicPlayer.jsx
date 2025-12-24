@@ -40,7 +40,7 @@ const MusicPlayer = () => {
       } else {
         audioRef.current.play()
           .then(() => setIsPlaying(true))
-          .catch((error) => console.log('播放失败:', error));
+          .catch((error) => console.error('播放失败:', error));
       }
     }
   };
