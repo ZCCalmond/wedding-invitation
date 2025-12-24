@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { MUSIC_PLAYER_CONSTANTS } from '../constants/musicPlayer';
 import './MusicPlayer.css';
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
+  const { musicSource, musicType, ariaLabelPlay, ariaLabelPause, playingIcon, pausedIcon } = MUSIC_PLAYER_CONSTANTS;
 
   useEffect(() => {
     // 尝试自动播放（需要用户交互）
@@ -52,7 +54,7 @@ const MusicPlayer = () => {
         loop
         preload="auto"
       >
-        <source src="/assets/music/wedding-music.mp3" type="audio/mpeg" />
+        <source src={musicSource} type={musicType} />
       </audio>
       
       <motion.div
@@ -66,10 +68,10 @@ const MusicPlayer = () => {
           onClick={togglePlay}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          aria-label={isPlaying ? '暂停音乐' : '播放音乐'}
+          aria-label={isPlaying ? ariaLabelPause : ariaLabelPlay}
         >
           <div className="music-icon">
-            {isPlaying ? '🎵' : '🔇'}
+            {isPlaying ? playingIcon : pausedIcon}
           </div>
         </motion.button>
       </motion.div>

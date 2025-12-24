@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
+import { WEDDING_INFO_CONSTANTS } from '../constants/weddingInfo';
 import './WeddingInfo.css';
 
 const WeddingInfo = () => {
-  const timeline = [
-    { time: '11:30', event: '新娘出门', icon: '🏠' },
-    { time: '12:30', event: '婚礼仪式', icon: '💒' },
-    { time: '13:30', event: '午宴开始', icon: '🍽️' },
-    { time: '15:00', event: '敬酒环节', icon: '🥂' },
-  ];
+  const { sectionTitle, dateCard, locationCard, timelineCard } = WEDDING_INFO_CONSTANTS;
 
   return (
     <motion.section
@@ -24,7 +20,7 @@ const WeddingInfo = () => {
         transition={{ delay: 0.3, duration: 0.8 }}
         viewport={{ once: true }}
       >
-        婚礼信息
+        {sectionTitle}
       </motion.h2>
       
       <div className="info-content">
@@ -35,11 +31,11 @@ const WeddingInfo = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="info-icon">📅</div>
-          <h3>婚礼时间</h3>
-          <p className="info-detail">2024年12月24日</p>
-          <p className="info-detail">星期二</p>
-          <p className="info-detail">农历十一月廿四</p>
+          <div className="info-icon">{dateCard.icon}</div>
+          <h3>{dateCard.title}</h3>
+          <p className="info-detail">{dateCard.date}</p>
+          <p className="info-detail">{dateCard.weekday}</p>
+          <p className="info-detail">{dateCard.lunarDate}</p>
         </motion.div>
         
         <motion.div
@@ -49,11 +45,11 @@ const WeddingInfo = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="info-icon">📍</div>
-          <h3>婚礼地点</h3>
-          <p className="info-detail">XX大酒店</p>
-          <p className="info-detail">宴会厅二楼</p>
-          <p className="info-detail">XX市XX区XX路123号</p>
+          <div className="info-icon">{locationCard.icon}</div>
+          <h3>{locationCard.title}</h3>
+          <p className="info-detail">{locationCard.venue}</p>
+          <p className="info-detail">{locationCard.floor}</p>
+          <p className="info-detail">{locationCard.address}</p>
         </motion.div>
         
         <motion.div
@@ -63,10 +59,10 @@ const WeddingInfo = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="info-icon">⏰</div>
-          <h3>婚礼流程</h3>
+          <div className="info-icon">{timelineCard.icon}</div>
+          <h3>{timelineCard.title}</h3>
           <div className="timeline">
-            {timeline.map((item, index) => (
+            {timelineCard.items.map((item, index) => (
               <motion.div
                 key={index}
                 className="timeline-item"

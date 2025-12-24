@@ -1,10 +1,12 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { VIDEO_PLAYER_CONSTANTS } from '../constants/videoPlayer';
 import './VideoPlayer.css';
 
 const VideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  const { sectionTitle, videoPoster, videoSource, videoType, unsupportedMessage } = VIDEO_PLAYER_CONSTANTS;
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -28,21 +30,21 @@ const VideoPlayer = () => {
         transition={{ delay: 0.3, duration: 0.8 }}
         viewport={{ once: true }}
       >
-        我们的视频
+        {sectionTitle}
       </motion.h2>
       
       <div className="video-container">
         <video
           ref={videoRef}
           className="video-element"
-          poster="https://via.placeholder.com/800x450/ffeef8/c89b7b?text=Video+Poster"
+          poster={videoPoster}
           controls
           playsInline
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
         >
-          <source src="/assets/videos/wedding-video.mp4" type="video/mp4" />
-          您的浏览器不支持视频播放
+          <source src={videoSource} type={videoType} />
+          {unsupportedMessage}
         </video>
         
         {!isPlaying && (

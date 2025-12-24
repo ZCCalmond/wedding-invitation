@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
+import { MAP_NAVIGATION_CONSTANTS } from '../constants/mapNavigation';
 import './MapNavigation.css';
 
 const MapNavigation = () => {
-  const location = {
-    name: 'XX大酒店',
-    address: 'XX市XX区XX路123号',
-    lat: 39.9042, // 示例坐标（北京）
-    lng: 116.4074,
-  };
+  const { sectionTitle, location, mapPlaceholder, mapAlt, buttons, locationIcon } = MAP_NAVIGATION_CONSTANTS;
 
   const openWechatMap = () => {
     // 微信内置地图导航
@@ -36,7 +32,7 @@ const MapNavigation = () => {
         transition={{ delay: 0.3, duration: 0.8 }}
         viewport={{ once: true }}
       >
-        地图导航
+        {sectionTitle}
       </motion.h2>
       
       <motion.div
@@ -48,14 +44,14 @@ const MapNavigation = () => {
       >
         <div className="map-container">
           <img
-            src="https://via.placeholder.com/800x400/fff5e6/c89b7b?text=Map+Placeholder"
-            alt="地图"
+            src={mapPlaceholder}
+            alt={mapAlt}
             className="map-image"
           />
         </div>
         
         <div className="location-info">
-          <div className="location-icon">📍</div>
+          <div className="location-icon">{locationIcon}</div>
           <h3 className="location-name">{location.name}</h3>
           <p className="location-address">{location.address}</p>
         </div>
@@ -67,8 +63,8 @@ const MapNavigation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="button-icon">🗺️</span>
-            <span>微信地图</span>
+            <span className="button-icon">{buttons.wechat.icon}</span>
+            <span>{buttons.wechat.text}</span>
           </motion.button>
           
           <motion.button
@@ -77,8 +73,8 @@ const MapNavigation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="button-icon">🧭</span>
-            <span>高德地图</span>
+            <span className="button-icon">{buttons.amap.icon}</span>
+            <span>{buttons.amap.text}</span>
           </motion.button>
         </div>
       </motion.div>

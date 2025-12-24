@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ENDING_CONSTANTS } from '../constants/ending';
 import './Ending.css';
 
 const Ending = () => {
+  const { title, message, signature, shareHint, heartEmoji, heartsCount } = ENDING_CONSTANTS;
+
   // Generate stable random values for hearts animation only once
   const [hearts] = useState(() => 
-    Array.from({ length: 12 }, (_, i) => ({
+    Array.from({ length: heartsCount }, (_, i) => ({
       id: i,
       duration: 3 + Math.random() * 2,
       delay: Math.random() * 2,
@@ -43,7 +46,7 @@ const Ending = () => {
               fontSize: `${heart.fontSize}rem`,
             }}
           >
-            ❤️
+            {heartEmoji}
           </motion.div>
         ))}
       </div>
@@ -55,7 +58,7 @@ const Ending = () => {
         transition={{ delay: 0.5, duration: 1 }}
         viewport={{ once: true }}
       >
-        <h2 className="ending-title">感谢您的祝福</h2>
+        <h2 className="ending-title">{title}</h2>
         
         <motion.p
           className="ending-message"
@@ -64,9 +67,12 @@ const Ending = () => {
           transition={{ delay: 0.8, duration: 1 }}
           viewport={{ once: true }}
         >
-          因为有你们的见证<br />
-          这份幸福才更加完整<br />
-          期待在婚礼当天与您相见
+          {message.map((line, index) => (
+            <span key={index}>
+              {line}
+              {index < message.length - 1 && <br />}
+            </span>
+          ))}
         </motion.p>
         
         <motion.div
@@ -76,8 +82,8 @@ const Ending = () => {
           transition={{ delay: 1.2, duration: 1 }}
           viewport={{ once: true }}
         >
-          <p className="signature-names">新郎 & 新娘</p>
-          <p className="signature-date">2024.12.24</p>
+          <p className="signature-names">{signature.names}</p>
+          <p className="signature-date">{signature.date}</p>
         </motion.div>
         
         <motion.div
@@ -87,7 +93,7 @@ const Ending = () => {
           transition={{ delay: 1.5, duration: 1 }}
           viewport={{ once: true }}
         >
-          <p>💌 点击右上角分享给更多朋友</p>
+          <p>{shareHint}</p>
         </motion.div>
       </motion.div>
     </motion.section>
