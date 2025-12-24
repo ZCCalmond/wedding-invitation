@@ -6,3 +6,4 @@ export { VIDEO_PLAYER_CONSTANTS } from './videoPlayer';
 export { MAP_NAVIGATION_CONSTANTS } from './mapNavigation';
 export { ENDING_CONSTANTS } from './ending';
 export { MUSIC_PLAYER_CONSTANTS } from './musicPlayer';
+export { SHARE_CONFIG } from './share';
