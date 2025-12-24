@@ -1,0 +1,120 @@
+.map-navigation {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #ffeef8 0%, #fff5e6 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.map-container {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.location-info {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.location-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.location-name {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  color: #c89b7b;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.location-address {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #8b7355;
+  line-height: 1.6;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button-icon {
+  font-size: 1.5rem;
+}
+
+.wechat-button {
+  background: linear-gradient(135deg, #7dd3c0 0%, #49ab95 100%);
+  color: white;
+}
+
+.wechat-button:hover {
+  box-shadow: 0 6px 20px rgba(73, 171, 149, 0.4);
+}
+
+.amap-button {
+  background: linear-gradient(135deg, #5eb3f6 0%, #2196f3 100%);
+  color: white;
+}
+
+.amap-button:hover {
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+@media (max-width: 768px) {
+  .map-navigation {
+    padding: 3rem 1rem;
+  }
+  
+  .location-info {
+    padding: 1.5rem;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+  }
+  
+  .nav-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

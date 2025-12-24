@@ -1,0 +1,135 @@
+.ending {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffeef8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(10px) rotate(5deg);
+  }
+}
+
+.ending-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.ending-title {
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  color: #c89b7b;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.ending-message {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  color: #8b7355;
+  line-height: 2;
+  margin-bottom: 2rem;
+}
+
+.signature {
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(212, 165, 116, 0.3);
+  border-bottom: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.signature-names {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  color: #d4a574;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.signature-date {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #a68968;
+  letter-spacing: 0.1em;
+}
+
+.share-hint {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(255, 238, 248, 0.6);
+  border-radius: 10px;
+  animation: pulse-hint 2s ease-in-out infinite;
+}
+
+.share-hint p {
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  color: #d4a574;
+  margin: 0;
+}
+
+@keyframes pulse-hint {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .ending {
+    padding: 3rem 1rem;
+  }
+  
+  .ending-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .ending-title {
+    font-size: 2rem;
+  }
+  
+  .ending-message {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  
+  .signature-names {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,11 @@
+# Videos Directory
+
+This directory is for wedding videos.
+
+## Example files to add:
+- wedding-video.mp4
+- proposal-video.mp4
+- etc.
+
+Update the VideoPlayer.jsx component to use actual video paths like:
+`/assets/videos/wedding-video.mp4`
