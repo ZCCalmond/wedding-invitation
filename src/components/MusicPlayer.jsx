@@ -7,31 +7,58 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
+  const autoPlayAttemptedRef = useRef(false);
   const { musicSource, musicType, ariaLabelPlay, ariaLabelPause, playingIcon, pausedIcon } = MUSIC_PLAYER_CONSTANTS;
 
+  // 尝试自动播放
   useEffect(() => {
-    // 尝试自动播放（需要用户交互）
+    if (!autoPlayAttemptedRef.current && audioRef.current) {
+      autoPlayAttemptedRef.current = true;
+      
+      // 延迟一下再播放，增加成功率
+      const timer = setTimeout(() => {
+        audioRef.current?.play()
+          .then(() => {
+            setIsPlaying(true);
+            setHasInteracted(true);
+            console.log('✓ 音乐自动播放成功');
+          })
+          .catch(() => {
+            console.log('⚠ 自动播放被浏览器阻止，等待用户交互...');
+            // 自动播放失败，等待用户交互
+          });
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  // 用户第一次交互时播放
+  useEffect(() => {
     const handleFirstInteraction = () => {
-      if (!hasInteracted) {
+      if (!hasInteracted && !isPlaying && audioRef.current) {
         setHasInteracted(true);
-        if (audioRef.current) {
-          audioRef.current.play()
-            .then(() => setIsPlaying(true))
-            .catch(() => {
-              // 自动播放失败，用户需要手动点击
-            });
-        }
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+            console.log('✓ 用户交互后音乐播放成功');
+          })
+          .catch((error) => {
+            console.error('播放失败:', error);
+          });
       }
     };
 
-    document.addEventListener('click', handleFirstInteraction);
-    document.addEventListener('touchstart', handleFirstInteraction);
+    document.addEventListener('click', handleFirstInteraction, { once: true });
+    document.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    document.addEventListener('scroll', handleFirstInteraction, { once: true });
 
     return () => {
       document.removeEventListener('click', handleFirstInteraction);
       document.removeEventListener('touchstart', handleFirstInteraction);
+      document.removeEventListener('scroll', handleFirstInteraction);
     };
-  }, [hasInteracted]);
+  }, [hasInteracted, isPlaying]);
 
   const togglePlay = (e) => {
     e.stopPropagation();
@@ -41,7 +68,10 @@ const MusicPlayer = () => {
         setIsPlaying(false);
       } else {
         audioRef.current.play()
-          .then(() => setIsPlaying(true))
+          .then(() => {
+            setIsPlaying(true);
+            setHasInteracted(true);
+          })
           .catch((error) => console.error('播放失败:', error));
       }
     }
