@@ -1,0 +1,101 @@
+.photo-gallery {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffeef8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  color: #c89b7b;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4a574, transparent);
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.photo-swiper {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.photo-slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.photo-slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.photo-caption {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #8b7355;
+  padding: 1rem;
+  text-align: center;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Swiper pagination customization */
+.photo-swiper :global(.swiper-pagination-bullet) {
+  background: #d4a574;
+  opacity: 0.5;
+}
+
+.photo-swiper :global(.swiper-pagination-bullet-active) {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .photo-gallery {
+    padding: 3rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .photo-swiper {
+    height: 400px;
+  }
+  
+  .photo-slide img {
+    height: 320px;
+  }
+}

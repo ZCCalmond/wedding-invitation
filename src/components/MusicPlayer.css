@@ -1,0 +1,92 @@
+.music-player {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.music-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #d4a574 0%, #c89b7b 100%);
+  box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #d4a574, #c89b7b, #d4a574, #c89b7b);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.music-button:hover::before {
+  opacity: 1;
+}
+
+.music-button:hover {
+  box-shadow: 0 6px 25px rgba(212, 165, 116, 0.6);
+}
+
+.music-icon {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.music-button.playing .music-icon {
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 为播放状态添加脉冲效果 */
+.music-button.playing {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(212, 165, 116, 0.7);
+  }
+}
+
+@media (max-width: 768px) {
+  .music-player {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .music-button {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .music-icon {
+    font-size: 1.5rem;
+  }
+}
