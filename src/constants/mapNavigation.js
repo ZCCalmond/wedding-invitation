@@ -5,9 +5,9 @@ export const MAP_NAVIGATION_CONSTANTS = {
   // 地点信息
   location: {
     name: '阜宁嘉隆国际大酒店',
-    address: '江苏省盐城市阜宁县北门街88号',
-    lat: 33.79, 
-    lng: 119.81,
+    address: '江苏省盐城市阜宁县北门街88号', // 33.783994,119.80249
+    lat: 33.783994,
+    lng: 119.80249,
   },
   
   // 地图占位图
