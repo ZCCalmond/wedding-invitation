@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import './Ending.css';
 
 const Ending = () => {
-  const hearts = Array.from({ length: 12 }, (_, i) => i);
+  // Generate stable random values for hearts animation only once
+  const [hearts] = useState(() => 
+    Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      duration: 3 + Math.random() * 2,
+      delay: Math.random() * 2,
+      left: 10 + Math.random() * 80,
+      fontSize: 1 + Math.random() * 1.5,
+    }))
+  );
 
   return (
     <motion.section
@@ -13,9 +23,9 @@ const Ending = () => {
       viewport={{ once: true }}
     >
       <div className="hearts-container">
-        {hearts.map((i) => (
+        {hearts.map((heart) => (
           <motion.div
-            key={i}
+            key={heart.id}
             className="heart"
             initial={{ y: 100, opacity: 0 }}
             animate={{
@@ -23,14 +33,14 @@ const Ending = () => {
               opacity: [0, 1, 1, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: heart.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: heart.delay,
               ease: "easeInOut",
             }}
             style={{
-              left: `${10 + Math.random() * 80}%`,
-              fontSize: `${1 + Math.random() * 1.5}rem`,
+              left: `${heart.left}%`,
+              fontSize: `${heart.fontSize}rem`,
             }}
           >
             ❤️
