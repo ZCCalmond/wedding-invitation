@@ -6,6 +6,12 @@ const Cover = () => {
   return (
     <motion.section
       className="cover"
+      style={{
+        backgroundImage: `url(${COVER_CONSTANTS.backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
@@ -16,13 +22,13 @@ const Cover = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        <h1 className="cover-title">
+        {/* <h1 className="cover-title">
           <span className="groom-name">{COVER_CONSTANTS.groomName}</span>
           <span className="and">&</span>
           <span className="bride-name">{COVER_CONSTANTS.brideName}</span>
-        </h1>
+        </h1> */}
         <p className="cover-date">{COVER_CONSTANTS.weddingDate}</p>
-        <p className="cover-subtitle">{COVER_CONSTANTS.subtitle}</p>
+        {/* <p className="cover-subtitle">{COVER_CONSTANTS.subtitle}</p> */}
       </motion.div>
 
       <motion.div
