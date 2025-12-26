@@ -1,6 +1,6 @@
 // MusicPlayer 组件的文案常量
 // 需要在文件顶部导入音乐文件
-import musicFile from '../assets/music/Perfect-EdSheeran.mp3';
+import musicFile from '../assets/music/LetItBeMe-RosieThomas.mp3';
 
 export const MUSIC_PLAYER_CONSTANTS = {
   // 使用 src/assets/music/ 目录下的本地音乐文件
