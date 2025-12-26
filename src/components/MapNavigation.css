@@ -16,10 +16,9 @@
 
 .map-container {
   width: 100%;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0; /* 只保留顶部圆角 */
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  position: relative;
 }
 
 .map-image {
@@ -28,33 +27,42 @@
   display: block;
 }
 
-.location-info {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
+/* 地址信息紧凑布局 - 直接连接地图底部 */
+.location-info-compact {
+  background: linear-gradient(135deg, #fff9f5 0%, #fef8f3 100%); /* 温暖的米白色渐变 */
+  padding: 1rem 1.5rem 0.8rem 1.5rem; /* 减小上下内边距 */
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  margin-bottom: 2rem;
-}
-
-.location-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  border-radius: 0 0 15px 15px; /* 只有底部圆角 */
+  box-shadow: 0 5px 20px rgba(200, 155, 123, 0.15); /* 使用主题色的阴影 */
+  margin-top: 0; /* 紧贴地图,没有间隙 */
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .location-name {
-  font-family: Georgia, serif;
-  font-size: 1.5rem;
+  font-family: 'KaiTi', 'STKaiti', Georgia, serif;
+  font-size: 1.1rem; /* 稍微减小字号 */
   color: #c89b7b;
-  margin-bottom: 0.5rem;
-  font-weight: 400;
+  margin: 0 0 0.3rem 0; /* 减小底部间距 */
+  font-weight: bold; /* 加粗 */
 }
 
 .location-address {
   font-family: Georgia, serif;
-  font-size: 1rem;
+  font-size: 0.85rem; /* 稍微减小字号 */
   color: #8b7355;
-  line-height: 1.6;
+  line-height: 1.4; /* 减小行高 */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem; /* 减小间距 */
+}
+
+.location-icon {
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .navigation-buttons {

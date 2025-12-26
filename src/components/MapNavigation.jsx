@@ -42,6 +42,7 @@ const MapNavigation = () => {
         transition={{ delay: 0.5, duration: 0.8 }}
         viewport={{ once: true }}
       >
+        {/* 地图 */}
         <div className="map-container">
           <img
             src={mapPlaceholder}
@@ -50,10 +51,13 @@ const MapNavigation = () => {
           />
         </div>
         
-        <div className="location-info">
-          <div className="location-icon">{locationIcon}</div>
+        {/* 地址信息紧挨地图，分两行 */}
+        <div className="location-info-compact">
           <h3 className="location-name">{location.name}</h3>
-          <p className="location-address">{location.address}</p>
+          <p className="location-address">
+            <span className="location-icon">{locationIcon}</span>
+            <span>{location.address}</span>
+          </p>
         </div>
         
         <div className="navigation-buttons">
